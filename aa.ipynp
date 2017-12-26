@@ -1,0 +1,983 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Charts in Colaboratory",
+      "version": "0.3.2",
+      "views": {},
+      "default_view": {},
+      "provenance": [],
+      "collapsed_sections": [],
+      "toc_visible": true
+    }
+  },
+  "cells": [
+    {
+      "metadata": {
+        "id": "QSMmdrrVLZ-N",
+        "colab_type": "text"
+      },
+      "source": [
+        "# Charting in Colaboratory\n",
+        "\n",
+        "A common use for notebooks is data visualization using charts. Colaboratory makes this easy with several charting tools available as Python imports."
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "xNzEBRkzL3B0",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Matplotlib\n",
+        "\n",
+        "[Matplotlib](http://matplotlib.org/) is the most common charting package, see its [documentation](http://matplotlib.org/api/pyplot_api.html) for details, and its [examples](http://matplotlib.org/gallery.html#statistics) for inspiration."
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "WALI8x49GUpe",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Line Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "08RTGn_xE3MP",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "x  = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+        "y1 = [1, 3, 5, 3, 1, 3, 5, 3, 1]\n",
+        "y2 = [2, 4, 6, 4, 2, 4, 6, 4, 2]\n",
+        "plt.plot(x, y1, label=\"line L\")\n",
+        "plt.plot(x, y2, label=\"line H\")\n",
+        "plt.plot()\n",
+        "\n",
+        "plt.xlabel(\"x axis\")\n",
+        "plt.ylabel(\"y axis\")\n",
+        "plt.title(\"Line Graph Example\")\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "sIZLTZ0pdo0Z",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Bar Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "bZv4MenQpYOF",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "# Look at index 4 and 6, which demonstrate overlapping cases.\n",
+        "x1 = [1, 3, 4, 5, 6, 7, 9]\n",
+        "y1 = [4, 7, 2, 4, 7, 8, 3]\n",
+        "\n",
+        "x2 = [2, 4, 6, 8, 10]\n",
+        "y2 = [5, 6, 2, 6, 2]\n",
+        "\n",
+        "# Colors: https://matplotlib.org/api/colors_api.html\n",
+        "\n",
+        "plt.bar(x1, y1, label=\"Blue Bar\", color='b')\n",
+        "plt.bar(x2, y2, label=\"Green Bar\", color='g')\n",
+        "plt.plot()\n",
+        "\n",
+        "plt.xlabel(\"bar number\")\n",
+        "plt.ylabel(\"bar height\")\n",
+        "plt.title(\"Bar Chart Example\")\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "YQO2Lw8Xdu7x",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Histograms"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "SZ-DMbnPMbMY",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "# Use numpy to generate a bunch of random data in a bell curve around 5.\n",
+        "n = 5 + np.random.randn(1000)\n",
+        "\n",
+        "m = [m for m in range(len(n))]\n",
+        "plt.bar(m, n)\n",
+        "plt.title(\"Raw Data\")\n",
+        "plt.show()\n",
+        "\n",
+        "plt.hist(n, bins=20)\n",
+        "plt.title(\"Histogram\")\n",
+        "plt.show()\n",
+        "\n",
+        "plt.hist(n, cumulative=True, bins=20)\n",
+        "plt.title(\"Cumulative Histogram\")\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "9-CelVUmdz8r",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Scatter Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "79C7jc9mv-Ji",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "x1 = [2, 3, 4]\n",
+        "y1 = [5, 5, 5]\n",
+        "\n",
+        "x2 = [1, 2, 3, 4, 5]\n",
+        "y2 = [2, 3, 2, 3, 4]\n",
+        "y3 = [6, 8, 7, 8, 7]\n",
+        "\n",
+        "# Markers: https://matplotlib.org/api/markers_api.html\n",
+        "\n",
+        "plt.scatter(x1, y1)\n",
+        "plt.scatter(x2, y2, marker='v', color='r')\n",
+        "plt.scatter(x2, y3, marker='^', color='m')\n",
+        "plt.title('Scatter Plot Example')\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "nlk-Sk0Nd82p",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Stack Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "5sxEM0pJzpgr",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "idxes = [ 1,  2,  3,  4,  5,  6,  7,  8,  9]\n",
+        "arr1  = [23, 40, 28, 43,  8, 44, 43, 18, 17]\n",
+        "arr2  = [17, 30, 22, 14, 17, 17, 29, 22, 30]\n",
+        "arr3  = [15, 31, 18, 22, 18, 19, 13, 32, 39]\n",
+        "\n",
+        "# Adding legend for stack plots is tricky.\n",
+        "plt.plot([], [], color='r', label = 'D 1')\n",
+        "plt.plot([], [], color='g', label = 'D 2')\n",
+        "plt.plot([], [], color='b', label = 'D 3')\n",
+        "\n",
+        "plt.stackplot(idxes, arr1, arr2, arr3, colors= ['r', 'g', 'b'])\n",
+        "plt.title('Stack Plot Example')\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "C0LOohpqeCjx",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Pie Charts"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "ZdEG-d4g4U6v",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "labels = 'S1', 'S2', 'S3'\n",
+        "sections = [56, 66, 24]\n",
+        "colors = ['c', 'g', 'y']\n",
+        "\n",
+        "plt.pie(sections, labels=labels, colors=colors,\n",
+        "        startangle=90,\n",
+        "        explode = (0, 0.1, 0),\n",
+        "        autopct = '%1.2f%%')\n",
+        "\n",
+        "plt.axis('equal') # Try commenting this out.\n",
+        "plt.title('Pie Chart Example')\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "sX97x87MTyIf",
+        "colab_type": "text"
+      },
+      "source": [
+        "### fill_between and alpha"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "BCUl8mTMT4sN",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "ys = 200 + np.random.randn(100)\n",
+        "x = [x for x in range(len(ys))]\n",
+        "\n",
+        "plt.plot(x, ys, '-')\n",
+        "plt.fill_between(x, ys, 195, where=(ys > 195), facecolor='g', alpha=0.6)\n",
+        "\n",
+        "plt.title(\"Fills and Alpha Example\")\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "jONspxyzeT4Y",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Subplotting using Subplot2grid"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "JF-dVGj3ExQm",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "def random_plots():\n",
+        "  xs = []\n",
+        "  ys = []\n",
+        "  \n",
+        "  for i in range(20):\n",
+        "    x = i\n",
+        "    y = np.random.randint(10)\n",
+        "    \n",
+        "    xs.append(x)\n",
+        "    ys.append(y)\n",
+        "  \n",
+        "  return xs, ys\n",
+        "\n",
+        "fig = plt.figure()\n",
+        "ax1 = plt.subplot2grid((5, 2), (0, 0), rowspan=1, colspan=2)\n",
+        "ax2 = plt.subplot2grid((5, 2), (1, 0), rowspan=3, colspan=2)\n",
+        "ax3 = plt.subplot2grid((5, 2), (4, 0), rowspan=1, colspan=1)\n",
+        "ax4 = plt.subplot2grid((5, 2), (4, 1), rowspan=1, colspan=1)\n",
+        "\n",
+        "x, y = random_plots()\n",
+        "ax1.plot(x, y)\n",
+        "\n",
+        "x, y = random_plots()\n",
+        "ax2.plot(x, y)\n",
+        "\n",
+        "x, y = random_plots()\n",
+        "ax3.plot(x, y)\n",
+        "\n",
+        "x, y = random_plots()\n",
+        "ax4.plot(x, y)\n",
+        "\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "fllyxKu8edm6",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Plot styles\n",
+        "\n",
+        "Colaboratory charts use [Seaborn's](https://seaborn.pydata.org) custom styling by default. To customize styling further please see the [matplotlib docs](https://matplotlib.org/users/style_sheets.html)."
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "Xn0jLwr8evoR",
+        "colab_type": "text"
+      },
+      "source": [
+        "## 3D Graphs"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "DrRCtocXe9SB",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 3D Scatter Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "Eo2bdDQ5GZ76",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "from mpl_toolkits.mplot3d import axes3d\n",
+        "\n",
+        "fig = plt.figure()\n",
+        "ax = fig.add_subplot(111, projection = '3d')\n",
+        "\n",
+        "x1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "y1 = np.random.randint(10, size=10)\n",
+        "z1 = np.random.randint(10, size=10)\n",
+        "\n",
+        "x2 = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10]\n",
+        "y2 = np.random.randint(-10, 0, size=10)\n",
+        "z2 = np.random.randint(10, size=10)\n",
+        "\n",
+        "ax.scatter(x1, y1, z1, c='b', marker='o', label='blue')\n",
+        "ax.scatter(x2, y2, z2, c='g', marker='D', label='green')\n",
+        "\n",
+        "ax.set_xlabel('x axis')\n",
+        "ax.set_ylabel('y axis')\n",
+        "ax.set_zlabel('z axis')\n",
+        "plt.title(\"3D Scatter Plot Example\")\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "MXVPkFpTfCE-",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 3D Bar Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "YGi1XPCrGsQz",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "fig = plt.figure()\n",
+        "ax = fig.add_subplot(111, projection = '3d')\n",
+        "\n",
+        "x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "y = np.random.randint(10, size=10)\n",
+        "z = np.zeros(10)\n",
+        "\n",
+        "dx = np.ones(10)\n",
+        "dy = np.ones(10)\n",
+        "dz = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n",
+        "\n",
+        "ax.bar3d(x, y, z, dx, dy, dz, color='g')\n",
+        "\n",
+        "ax.set_xlabel('x axis')\n",
+        "ax.set_ylabel('y axis')\n",
+        "ax.set_zlabel('z axis')\n",
+        "plt.title(\"3D Bar Chart Example\")\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "Xbey0KVpfIbQ",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Wireframe Plots"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "60f2SO4jIfQz",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "fig = plt.figure()\n",
+        "ax = fig.add_subplot(111, projection = '3d')\n",
+        "\n",
+        "x, y, z = axes3d.get_test_data()\n",
+        "\n",
+        "ax.plot_wireframe(x, y, z, rstride = 2, cstride = 2)\n",
+        "\n",
+        "plt.title(\"Wireframe Plot Example\")\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "cRkuifc7PazR",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Seaborn\n",
+        "\n",
+        "There are several libraries layered on top of Matplotlib that you can use in Colab. One that is worth highlighting is [Seaborn](http://seaborn.pydata.org):"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "el13bTbyPRw4",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Generate some random data\n",
+        "num_points = 20\n",
+        "# x will be 5, 6, 7... but also twiddled randomly\n",
+        "x = 5 + np.arange(num_points) + np.random.randn(num_points)\n",
+        "# y will be 10, 11, 12... but twiddled even more randomly\n",
+        "y = 10 + np.arange(num_points) + 5 * np.random.randn(num_points)\n",
+        "sns.regplot(x, y)\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "MoWj1knmTZPI",
+        "colab_type": "text"
+      },
+      "source": [
+        "That's a simple scatterplot with a nice regression line fit to it, all with just one call to Seaborn's [regplot](http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot).\n",
+        "\n",
+        "Here's a Seaborn [heatmap](https://seaborn.pydata.org/generated/seaborn.heatmap.html):"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "Fjw7UfGZQcL9",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "# Make a 10 x 10 heatmap of some random data\n",
+        "side_length = 10\n",
+        "# Start with a 10 x 10 matrix with values randomized around 5\n",
+        "data = 5 + np.random.randn(side_length, side_length)\n",
+        "# The next two lines make the values larger as we get closer to (9, 9)\n",
+        "data += np.arange(side_length)\n",
+        "data += np.reshape(np.arange(side_length), (side_length, 1))\n",
+        "# Generate the heatmap\n",
+        "sns.heatmap(data)\n",
+        "plt.show()"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "beTgCbVa_wFA",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Altair"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "ExiqlugdJyCY",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Installation"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "610XkhS2Atb0",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "!pip install altair jupyter pandas vega\n",
+        "!pip install --upgrade notebook\n",
+        "!python -Wignore -m notebook.nbextensions install --sys-prefix --py vega"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "9SO3YzXiEQcA",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Cell configuration\n",
+        "This method pre-populates the outputframe with the configuration that Altair expects and must be executed for every cell which is displaying an Altair graph.\n"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "IogrxfkNEQcC",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "def configure_altair_browser_state():\n",
+        "  import IPython\n",
+        "  display(IPython.core.display.HTML('''\n",
+        "        <script src=\"/static/components/requirejs/require.js\"></script>\n",
+        "        <script>\n",
+        "          // Altair requires window.outputs to be defined.\n",
+        "          window.outputs = [];\n",
+        "          requirejs.config({\n",
+        "            paths: {\n",
+        "              base: '/static/base',\n",
+        "              jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min',\n",
+        "            },\n",
+        "          });\n",
+        "        </script>\n",
+        "        '''))\n"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "wc08CKLysgKb",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import altair as alt\n",
+        "\n",
+        "cars = alt.load_dataset('cars')\n",
+        "\n",
+        "configure_altair_browser_state()\n",
+        "\n",
+        "alt.Chart(cars).mark_point().encode(\n",
+        "    x='Horsepower',\n",
+        "    y='Miles_per_Gallon',\n",
+        "    color='Origin',\n",
+        ")"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "mlPjkAty7kcK",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Plotly"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "YVhMPxwa-wmS",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Cell configuration\n",
+        "This method pre-populates the outputframe with the configuration that Plotly expects and must be executed for every cell which is displaying a Plotly graph.\n"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "kfzZSdGL1b93",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "def configure_plotly_browser_state():\n",
+        "  import IPython\n",
+        "  display(IPython.core.display.HTML('''\n",
+        "        <script src=\"/static/components/requirejs/require.js\"></script>\n",
+        "        <script>\n",
+        "          requirejs.config({\n",
+        "            paths: {\n",
+        "              base: '/static/base',\n",
+        "              plotly: 'https://cdn.plot.ly/plotly-1.5.1.min.js?noext',\n",
+        "            },\n",
+        "          });\n",
+        "        </script>\n",
+        "        '''))\n"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "itjfBNuLKZhN",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Sample"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "8RCjUVpi2_xd",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import plotly.plotly as py\n",
+        "import numpy as np\n",
+        "from plotly.offline import init_notebook_mode, iplot\n",
+        "from plotly.graph_objs import Contours, Histogram2dContour, Marker, Scatter\n",
+        "\n",
+        "configure_plotly_browser_state()\n",
+        "\n",
+        "init_notebook_mode(connected=False)\n",
+        "\n",
+        "x = np.random.randn(2000)\n",
+        "y = np.random.randn(2000)\n",
+        "iplot([Histogram2dContour(x=x, y=y, contours=Contours(coloring='heatmap')),\n",
+        "       Scatter(x=x, y=y, mode='markers', marker=Marker(color='white', size=3, opacity=0.3))], show_link=False)\n"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "JGnotb1n73Yk",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Bokeh"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "WBw13toAKSZg",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Installation"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "iyzBfJwq72hC",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "!pip install bokeh"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "J3dDw5_wKbpe",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Sample"
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "vlOIt0zZ5uCz",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "import numpy as np\n",
+        "from bokeh.plotting import figure, show\n",
+        "from bokeh.io import output_notebook"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "uKpMjg2m53Pg",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "N = 4000"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "6YVlGlxQ54fH",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "x = np.random.random(size=N) * 100\n",
+        "y = np.random.random(size=N) * 100\n",
+        "radii = np.random.random(size=N) * 1.5\n",
+        "colors = [\"#%02x%02x%02x\" % (r, g, 150) for r, g in zip(np.floor(50+2*x).astype(int), np.floor(30+2*y).astype(int))]"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "wNmOIs7W8SKm",
+        "colab_type": "text"
+      },
+      "source": [
+        "It's important that `output_notebook()` be called from within the cell which is executing."
+      ],
+      "cell_type": "markdown"
+    },
+    {
+      "metadata": {
+        "id": "nv8P3UYm6SiQ",
+        "colab_type": "code",
+        "colab": {
+          "autoexec": {
+            "startup": false,
+            "wait_interval": 0
+          }
+        }
+      },
+      "source": [
+        "output_notebook()\n",
+        "p = figure()\n",
+        "p.circle(x, y, radius=radii, fill_color=colors, fill_alpha=0.6, line_color=None)\n",
+        "show(p)"
+      ],
+      "cell_type": "code",
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
